@@ -1,0 +1,22 @@
+'''
+https://leetcode.com/contest/weekly-contest-276/problems/divide-a-string-into-groups-of-size-k/
+'''
+
+class Solution:
+    def divideString(self, s: str, k: int, fill: str) -> List[str]:
+        ans=[];x='';i=0
+        while i<len(s):
+            x+=s[i]
+            if len(x)==k:
+                ans.append(x)
+                x=''
+            i+=1
+       
+        if len(s)%k==0:
+            return ans
+        
+        while len(x)!=k:
+            x+=fill
+        ans.append(x)
+        return ans
+        
