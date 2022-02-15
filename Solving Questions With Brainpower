@@ -1,0 +1,24 @@
+'''
+https://leetcode.com/contest/weekly-contest-276/problems/solving-questions-with-brainpower/
+'''
+
+class Solution:
+    def mostPoints(self, questions: List[List[int]]) -> int:
+    
+        def solve(ind,questions,n,dp): 
+            if ind>=n:
+                return 0
+            
+            if dp[ind]!=-1:
+                return dp[ind]
+            
+            dp[ind]=max(questions[ind][0]+solve(ind+questions[ind][1]+1,questions,n,dp), solve(ind+1,questions,n,dp))
+            return dp[ind]
+            
+            
+        dp=[-1 for i in range(len(questions))]
+        n=len(questions)
+        x=solve(0,questions,n,dp)
+        return dp[0]
+    
+        
